@@ -6,6 +6,9 @@
   "scripts": {
     "start": "node index.js"
   },
+  "render": {
+    "root": "."
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
