@@ -49,7 +49,7 @@ function GlowingGrid() {
     state.camera.lookAt(0, 0, 0);
   });
   return (
-    <mesh ref={meshRef} rotation-x={-Math.PI / 2} position={[0, 0, 0]}>
+    <mesh ref={meshRef} rotation-x={-Math.PI / 2} position={[0, -1, 0]}>
       <planeGeometry args={[12, 12, 64, 64]} />
       <meshBasicMaterial color="#2563eb" wireframe opacity={0.7} transparent />
     </mesh>
@@ -97,7 +97,7 @@ const CountdownSection = () => {
         <section className="w-full min-h-screen flex flex-col items-center justify-center bg-white text-blue-900 relative overflow-hidden font-sans p-0 m-0">
             {/* 3D Blue Grid on White Background */}
             <div className="absolute inset-0 z-0 pointer-events-none">
-                <Canvas camera={{ position: [0, 3, 6], fov: 60 }} style={{ background: 'white' }} gl={{ alpha: false }}>
+                <Canvas camera={{ position: [0, 4, 6], fov: 60 }} style={{ background: 'white' }} gl={{ alpha: false }}>
                     <ambientLight intensity={0.8} />
                     <GlowingGrid />
                 </Canvas>
