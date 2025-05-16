@@ -109,7 +109,7 @@ const InteractiveHero: React.FC = () => {
       <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-3xl mx-auto px-4">
         <h1 className="text-2xl sm:text-3xl font-bold tracking-widest text-primary mb-2 uppercase">WELCOME TO</h1>
         <div className="mb-6">
-          <RotatingText texts={["Hackverse", "Innovation", "Imagination", "Creativity", "Collaboration", "Impact"]} className="text-primary text-5xl sm:text-7xl font-extrabold tracking-tight drop-shadow-lg" />
+          <RotatingText texts={["Hackverse 2025", "Innovation", "Imagination", "Creativity", "Collaboration", "Impact"]} className="text-primary text-5xl sm:text-7xl font-extrabold tracking-tight drop-shadow-lg" />
         </div>
         <form className="flex flex-col sm:flex-row items-center justify-center gap-2 w-full max-w-md mx-auto mb-6">
           <input

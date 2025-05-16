@@ -105,9 +105,9 @@ const CountdownSection = () => {
             <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-3xl mx-auto px-4">
                 <h1 className="text-2xl sm:text-3xl font-bold tracking-widest text-primary mb-2 uppercase">WELCOME TO</h1>
                 <div className="mb-6">
-                    <RotatingText texts={["Hackverse 2024", "Countdown", "Innovation", "Imagination", "Creativity", "Collaboration", "Impact"]} className="text-primary text-5xl sm:text-7xl font-extrabold tracking-tight drop-shadow-lg" />
+                    <RotatingText texts={["Hackverse 2025"]} className="text-primary text-5xl sm:text-7xl font-extrabold tracking-tight drop-shadow-lg" />
                 </div>
-                <div className="grid grid-cols-4 gap-4 mb-12">
+                <div className="flex gap-4 mb-12">
                     <div className="bg-white rounded-lg p-4 shadow-lg text-center">
                         <div className="text-3xl font-bold text-blue-600">{timeLeft.days}</div>
                         <div className="text-sm text-blue-900">Days</div>
@@ -124,21 +124,6 @@ const CountdownSection = () => {
                         <div className="text-3xl font-bold text-blue-600">{timeLeft.seconds}</div>
                         <div className="text-sm text-blue-900">Seconds</div>
                     </div>
-                </div>
-                <p className="text-xl text-blue-800 max-w-2xl text-center mb-12 font-medium">
-                    Join us for the most exciting hackathon of 2024. Build, innovate, and create something amazing!
-                </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md mx-auto">
-                    <Link to="/signup">
-                        <Button className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-lg font-bold transition-colors duration-200">
-                            Sign Up
-                        </Button>
-                    </Link>
-                    <Link to="/login">
-                        <Button variant="outline" className="w-full sm:w-auto border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-lg text-lg font-bold transition-colors duration-200">
-                            Login
-                        </Button>
-                    </Link>
                 </div>
             </div>
         </section>
