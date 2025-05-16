@@ -4,16 +4,15 @@ import { Link } from "react-router-dom";
 
 export default function SignupPage() {
     const [formData, setFormData] = useState({
-        email: "",
+        username: "",  // Keep 'username' here
         password: "",
         confirmPassword: "",
-        username: "",
     });
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Handle form submission
-        console.log(formData);
+        // Handle form submission (e.g., validate the form and send the data)
+        console.log(formData);  // Add logic to handle form submission
     };
 
     return (
@@ -23,25 +22,11 @@ export default function SignupPage() {
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-2">
-                        <label htmlFor="email" className="text-sm font-medium">
-                            Email
-                        </label>
-                        <input
-                            type="email"
-                            id="email"
-                            className="w-full p-2 border rounded-md"
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            required
-                        />
-                    </div>
-
-                    <div className="space-y-2">
                         <label htmlFor="username" className="text-sm font-medium">
                             Username
                         </label>
                         <input
-                            type="text"
+                            type="text"  // 'text' type to remove email validation
                             id="username"
                             className="w-full p-2 border rounded-md"
                             value={formData.username}
@@ -92,4 +77,4 @@ export default function SignupPage() {
             </div>
         </div>
     );
-} 
+}

@@ -40,19 +40,28 @@ const Login = () => {
     setLoading(true);
     try {
       // Check for hardcoded credentials
-      if (formData.email === 'Shriem007@gmail.com' && formData.password === 'Tofu@007') {
+      if (formData.email === 'shriemadmin@gmail.com' && formData.password === 'Tofu123@Admin') {
         // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        // Create user data
+        // Create admin user data
+        const userData = {
+          id: 0,
+          email: formData.email,
+          name: 'Admin',
+          role: 'admin'
+        };
+        login(userData, 'admin-auth-token');
+        navigate('/admin');
+      } else if (formData.email === 'Shriem007@gmail.com' && formData.password === 'Tofu@007') {
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        // Create student user data
         const userData = {
           id: 1,
           email: formData.email,
           name: 'Shriem',
           role: 'student'
         };
-        
-        // Login with user data
         login(userData, 'auth-token');
         navigate('/home');
       } else {
@@ -81,7 +90,7 @@ const Login = () => {
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white/80 dark:bg-black/80 py-8 px-4 shadow-xl rounded-lg sm:px-10">
+        <div className="bg-card py-8 px-4 shadow-xl rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             {errors.submit && (
               <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded relative" role="alert">
@@ -103,7 +112,7 @@ const Login = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   className={`appearance-none block w-full px-3 py-2 border ${
-                    errors.email ? 'border-red-300' : 'border-gray-300'
+                    errors.email ? 'border-red-300' : 'border-border'
                   } rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm transition-colors duration-200 bg-background text-foreground`}
                 />
                 {errors.email && (
@@ -126,7 +135,7 @@ const Login = () => {
                   value={formData.password}
                   onChange={handleInputChange}
                   className={`appearance-none block w-full px-3 py-2 border ${
-                    errors.password ? 'border-red-300' : 'border-gray-300'
+                    errors.password ? 'border-red-300' : 'border-border'
                   } rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm transition-colors duration-200 bg-background text-foreground`}
                 />
                 {errors.password && (
@@ -141,7 +150,7 @@ const Login = () => {
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
-                  className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded transition-colors duration-200"
+                  className="h-4 w-4 text-primary focus:ring-primary border-border rounded transition-colors duration-200"
                 />
                 <label htmlFor="remember-me" className="ml-2 block text-sm text-foreground">
                   Remember me

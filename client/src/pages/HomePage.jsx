@@ -1,41 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useAuth } from '../context/AuthContext';
+import React from "react";
 import InteractiveHero from "../components/ui/InteractiveHero";
-
-const HACKATHON_DATE = new Date('2025-05-07T10:00:00');
-
-function getCountdown() {
-  const now = new Date();
-  const diff = HACKATHON_DATE - now;
-  if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);
-  return { days, hours, minutes, seconds };
-}
+import { Particles } from "../components/ui/particles";
 
 const HomePage = () => {
-  const [showNavbar, setShowNavbar] = useState(false);
-  const { user, logout } = useAuth();
-  const [countdown, setCountdown] = useState(getCountdown());
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowNavbar(window.scrollY > 100);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCountdown(getCountdown());
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
   const upcomingHackathons = [
     {
       id: 1,
@@ -72,6 +39,66 @@ const HomePage = () => {
       description: "Develop solutions for environmental challenges",
       skills: ["IoT", "Data Analytics", "Cloud Computing"],
       mentors: ["Dr. Emily Green", "Mark Johnson"]
+    },
+    {
+      id: 4,
+      name: "HealthTech Sprint",
+      date: "August 5-7, 2024",
+      prize: "$8,000",
+      participants: 100,
+      status: "Registration Open",
+      theme: "Healthcare Innovation",
+      description: "Innovate for better healthcare solutions",
+      skills: ["Python", "Biotech", "Data Science"],
+      mentors: ["Dr. Lisa Wong", "Dr. Raj Patel"]
+    },
+    {
+      id: 5,
+      name: "FinTech Fusion",
+      date: "September 12-14, 2024",
+      prize: "$11,000",
+      participants: 130,
+      status: "Coming Soon",
+      theme: "Finance & Technology",
+      description: "Revolutionize the future of finance",
+      skills: ["JavaScript", "APIs", "FinTech"],
+      mentors: ["Samantha Lee", "John Carter"]
+    },
+    {
+      id: 6,
+      name: "EduTech Jam",
+      date: "October 20-22, 2024",
+      prize: "$9,000",
+      participants: 110,
+      status: "Registration Open",
+      theme: "Education Technology",
+      description: "Transform learning with technology",
+      skills: ["React", "UX/UI", "EdTech"],
+      mentors: ["Priya Singh", "Tom Evans"]
+    },
+    {
+      id: 7,
+      name: "Cybersecurity Blitz",
+      date: "November 15-17, 2024",
+      prize: "$13,000",
+      participants: 140,
+      status: "Registration Open",
+      theme: "Cybersecurity",
+      description: "Defend and innovate in the world of cybersecurity",
+      skills: ["Python", "Networking", "Security"],
+      mentors: ["Dr. Alan Turing", "Grace Hopper"]
+    },
+    {
+      id: 8,
+      name: "SpaceTech Odyssey",
+      date: "December 5-7, 2024",
+      prize: "$20,000",
+      participants: 160,
+      status: "Coming Soon",
+      theme: "Space Technology",
+      description: "Innovate for the next frontier in space exploration",
+      skills: ["Aerospace", "Robotics", "AI"],
+      mentors: ["Elena Musk", "Neil Armstrong Jr."]
     }
   ];
 
@@ -83,112 +110,71 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="bg-[#09090b] text-white min-h-screen font-sans">
-      <InteractiveHero />
-
-      {/* Stats Section */}
-      <section className="py-16 px-4 max-w-6xl mx-auto bg-transparent">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-          {stats.map((stat, index) => (
-            <div key={index} className="bg-[#18181b] rounded-xl shadow-lg flex flex-col items-center p-6 border border-[#23232a] hover:border-primary transition">
-              <span className="text-3xl mb-2">{stat.icon}</span>
-              <h3 className="text-2xl font-extrabold text-primary mb-1">{stat.value}</h3>
-              <p className="text-sm text-gray-400 font-medium">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Upcoming Hackathons */}
-      <section className="py-16 px-4 max-w-6xl mx-auto bg-transparent">
-        <h2 className="text-3xl font-bold text-primary mb-8 text-center tracking-tight">Upcoming Hackathons</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {upcomingHackathons.map((hackathon) => (
-            <div key={hackathon.id} className="bg-[#18181b] rounded-2xl shadow-xl border border-[#23232a] p-6 flex flex-col hover:border-primary transition">
-              <h3 className="text-xl font-bold text-primary mb-2">{hackathon.name}</h3>
-              <div className="text-gray-400 text-sm mb-2">{hackathon.date} • {hackathon.theme}</div>
-              <p className="mb-2 text-gray-300">{hackathon.description}</p>
-              <div className="flex flex-wrap gap-2 mb-2">
-                {hackathon.skills.map((skill, idx) => (
-                  <span key={idx} className="bg-[#23232a] text-primary px-2 py-1 rounded text-xs font-semibold">{skill}</span>
-                ))}
-              </div>
-              <div className="flex flex-wrap gap-2 mb-2">
-                {hackathon.mentors.map((mentor, idx) => (
-                  <span key={idx} className="bg-[#23232a] text-gray-200 px-2 py-1 rounded text-xs">{mentor}</span>
-                ))}
-              </div>
-              <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-3 ${hackathon.status === 'Registration Open' ? 'bg-primary text-black' : 'bg-gray-700 text-gray-300'}`}>{hackathon.status}</span>
-              <div className="flex items-center justify-between mt-auto">
-                <span className="text-lg font-bold text-primary">{hackathon.prize}</span>
-                <button className="ml-2 px-4 py-2 rounded-lg bg-primary text-black font-semibold shadow hover:bg-primary/80 transition">Register</button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-16 px-4 max-w-6xl mx-auto bg-transparent">
-        <h2 className="text-3xl font-bold text-primary mb-8 text-center tracking-tight">Why Join Hackverse?</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-[#18181b] rounded-2xl shadow-xl border border-[#23232a] p-6 flex flex-col items-center">
-            <div className="text-3xl mb-2">🤝</div>
-            <h3 className="text-xl font-bold text-primary mb-2">Team Collaboration</h3>
-            <p className="text-gray-300 text-center">Connect with like-minded developers and form teams to work on innovative projects.</p>
-          </div>
-          <div className="bg-[#18181b] rounded-2xl shadow-xl border border-[#23232a] p-6 flex flex-col items-center">
-            <div className="text-3xl mb-2">👨‍🏫</div>
-            <h3 className="text-xl font-bold text-primary mb-2">Mentorship</h3>
-            <p className="text-gray-300 text-center">Get guidance from industry experts and experienced mentors throughout your hackathon journey.</p>
-          </div>
-          <div className="bg-[#18181b] rounded-2xl shadow-xl border border-[#23232a] p-6 flex flex-col items-center">
-            <div className="text-3xl mb-2">🎯</div>
-            <h3 className="text-xl font-bold text-primary mb-2">Project Showcase</h3>
-            <p className="text-gray-300 text-center">Showcase your projects to potential employers and the tech community.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Dashboard Access */}
-      {user ? (
+    <div className="relative w-full min-h-screen">
+      <Particles className="fixed inset-0 z-0" quantity={1440} color="#2563eb" />
+      <div className="relative z-10">
+        <InteractiveHero />
+        {/* Stats Section */}
         <section className="py-16 px-4 max-w-6xl mx-auto bg-transparent">
-          <div className="bg-[#18181b] rounded-2xl shadow-xl border border-[#23232a] p-8">
-            <h2 className="text-2xl font-bold text-primary mb-2">Welcome to Your Dashboard</h2>
-            <p className="text-gray-400 mb-6">Manage your hackathon journey</p>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-[#23232a] rounded-xl p-6 flex flex-col items-center">
-                <span className="text-2xl mb-2">📊</span>
-                <h3 className="font-bold text-primary mb-1">Your Progress</h3>
-                <p className="text-gray-300 mb-2">2 Hackathons Completed</p>
-                <div className="w-full h-2 bg-gray-700 rounded-full mb-2">
-                  <div className="h-2 bg-primary rounded-full" style={{ width: '60%' }}></div>
-                </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+            {stats.map((stat, index) => (
+              <div
+                key={index}
+                className="bg-card rounded-xl shadow-lg flex flex-col items-center p-6 border border-border hover:border-primary transition-all duration-300 hover:scale-105"
+              >
+                <span className="text-3xl mb-2">{stat.icon}</span>
+                <h3 className="text-2xl font-extrabold text-primary mb-1">{stat.value}</h3>
+                <p className="text-sm text-muted-foreground font-medium">{stat.label}</p>
               </div>
-              <div className="bg-[#23232a] rounded-xl p-6 flex flex-col items-center">
-                <span className="text-2xl mb-2">🏆</span>
-                <h3 className="font-bold text-primary mb-1">Achievements</h3>
-                <p className="text-gray-300 mb-2">3 Awards Won</p>
-                <div className="flex gap-2">
-                  <span className="bg-primary text-black px-2 py-1 rounded text-xs font-bold">🥇 First Place</span>
-                  <span className="bg-primary text-black px-2 py-1 rounded text-xs font-bold">🎯 Best Design</span>
-                  <span className="bg-primary text-black px-2 py-1 rounded text-xs font-bold">💡 Innovation</span>
-                </div>
+            ))}
+          </div>
+        </section>
+        {/* Upcoming Hackathons */}
+        <section className="py-16 px-4 max-w-6xl mx-auto bg-transparent">
+          <h2 className="text-3xl font-bold text-primary mb-8 text-center tracking-tight">Upcoming Hackathons</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+            {upcomingHackathons.map((hackathon) => (
+              <div
+                key={hackathon.id}
+                className="bg-card bg-white/70 border border-border rounded-xl shadow-lg flex flex-col items-center justify-center min-h-[120px] h-[120px] p-6 text-center"
+              >
+                <h3 className="text-xl font-bold text-primary mb-1">{hackathon.name}</h3>
+                <div className="text-sm text-muted-foreground mb-1">{hackathon.date}</div>
+                <div className="text-sm text-muted-foreground mb-1">{hackathon.theme}</div>
+                <span className={`inline-block px-2 py-1 rounded-full text-xs font-bold mb-2 ${hackathon.status === 'Registration Open' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground'}`}>{hackathon.status}</span>
+                <span className="text-lg font-bold text-primary">{hackathon.prize}</span>
               </div>
-              <div className="bg-[#23232a] rounded-xl p-6 flex flex-col items-center">
-                <span className="text-2xl mb-2">👥</span>
-                <h3 className="font-bold text-primary mb-1">Team Members</h3>
-                <p className="text-gray-300 mb-2">5 Active Members</p>
-                <div className="flex gap-2">
-                  <span className="bg-gray-700 text-white px-2 py-1 rounded-full text-xs">JD</span>
-                  <span className="bg-gray-700 text-white px-2 py-1 rounded-full text-xs">AS</span>
-                  <span className="bg-gray-700 text-white px-2 py-1 rounded-full text-xs">+3</span>
-                </div>
-              </div>
+            ))}
+          </div>
+        </section>
+        {/* Why Join Hackverse? */}
+        <section className="py-16 px-4 max-w-6xl mx-auto bg-transparent">
+          <h2 className="text-3xl font-bold text-primary mb-8 text-center tracking-tight">Why Join Hackverse?</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div
+              className="bg-card border border-accent rounded-2xl shadow-lg p-8 flex flex-col items-center transition-transform duration-300 hover:shadow-2xl hover:-translate-y-2"
+            >
+              <span className="text-5xl mb-4">🤝</span>
+              <h3 className="text-xl font-bold text-primary mb-2">Team Collaboration</h3>
+              <p className="text-muted-foreground text-center">Connect with like-minded developers and form teams to work on innovative projects.</p>
+            </div>
+            <div
+              className="bg-card border border-accent rounded-2xl shadow-lg p-8 flex flex-col items-center transition-transform duration-300 hover:shadow-2xl hover:-translate-y-2"
+            >
+              <span className="text-5xl mb-4">👨‍🏫</span>
+              <h3 className="text-xl font-bold text-primary mb-2">Mentorship</h3>
+              <p className="text-muted-foreground text-center">Get guidance from industry experts and experienced mentors throughout your hackathon journey.</p>
+            </div>
+            <div
+              className="bg-card border border-accent rounded-2xl shadow-lg p-8 flex flex-col items-center transition-transform duration-300 hover:shadow-2xl hover:-translate-y-2"
+            >
+              <span className="text-5xl mb-4">🎯</span>
+              <h3 className="text-xl font-bold text-primary mb-2">Project Showcase</h3>
+              <p className="text-muted-foreground text-center">Showcase your projects to potential employers and the tech community.</p>
             </div>
           </div>
         </section>
-      ) : null}
+      </div>
     </div>
   );
 };

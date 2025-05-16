@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Team Alpha",
+    "members": [1, 2],
+    "hackathonId": 1
+  },
+  {
+    "id": 2,
+    "name": "Team Beta",
+    "members": [2],
+    "hackathonId": 2
+  }
+] 

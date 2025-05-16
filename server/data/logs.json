@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "type": "login",
+    "userId": 1,
+    "timestamp": "2024-05-17T08:00:00Z",
+    "message": "Admin logged in."
+  },
+  {
+    "id": 2,
+    "type": "submission",
+    "userId": 2,
+    "timestamp": "2024-05-17T09:00:00Z",
+    "message": "User submitted a project."
+  }
+] 

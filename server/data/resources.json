@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "Project Templates",
+    "description": "Ready-to-use templates for various hackathon projects",
+    "link": "https://github.com/hackverse/templates"
+  },
+  {
+    "id": 2,
+    "title": "API Integration Guide",
+    "description": "Popular APIs and integration guides",
+    "link": "https://docs.hackverse.com/apis"
+  }
+] 

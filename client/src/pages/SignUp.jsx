@@ -72,7 +72,7 @@ const SignUp = () => {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
-        <div className="bg-white/80 dark:bg-black/80 py-8 px-4 shadow-xl rounded-lg sm:px-10">
+        <div className="bg-card py-8 px-4 shadow-xl rounded-lg sm:px-10">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-extrabold text-primary">
               Join Hackverse
@@ -122,9 +122,7 @@ const SignUp = () => {
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleInputChange}
-                  className={`mt-1 block w-full rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm ${
-                    errors.fullName ? 'border-red-300' : 'border-gray-300'
-                  }`}
+                  className={`mt-1 block w-full rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm ${errors.fullName ? 'border-red-300' : 'border-border'}`}
                 />
                 {errors.fullName && (
                   <p className="mt-1 text-sm text-red-600">{errors.fullName}</p>
@@ -141,9 +139,7 @@ const SignUp = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`mt-1 block w-full rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm ${
-                    errors.email ? 'border-red-300' : 'border-gray-300'
-                  }`}
+                  className={`mt-1 block w-full rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm ${errors.email ? 'border-red-300' : 'border-border'}`}
                 />
                 {errors.email && (
                   <p className="mt-1 text-sm text-red-600">{errors.email}</p>
@@ -160,9 +156,7 @@ const SignUp = () => {
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  className={`mt-1 block w-full rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm ${
-                    errors.password ? 'border-red-300' : 'border-gray-300'
-                  }`}
+                  className={`mt-1 block w-full rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm ${errors.password ? 'border-red-300' : 'border-border'}`}
                 />
                 {errors.password && (
                   <p className="mt-1 text-sm text-red-600">{errors.password}</p>
@@ -179,9 +173,7 @@ const SignUp = () => {
                   name="yearMajor"
                   value={formData.yearMajor}
                   onChange={handleInputChange}
-                  className={`mt-1 block w-full rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm ${
-                    errors.yearMajor ? 'border-red-300' : 'border-gray-300'
-                  }`}
+                  className={`mt-1 block w-full rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm ${errors.yearMajor ? 'border-red-300' : 'border-border'}`}
                 />
                 {errors.yearMajor && (
                   <p className="mt-1 text-sm text-red-600">{errors.yearMajor}</p>
@@ -194,7 +186,7 @@ const SignUp = () => {
               <div className="space-y-4">
                 <h3 className="text-lg font-medium text-foreground">Team Members</h3>
                 {teamMembers.map((member, index) => (
-                  <div key={index} className="bg-background p-4 rounded-lg space-y-4 border border-gray-200">
+                  <div key={index} className="bg-background p-4 rounded-lg space-y-4 border border-border">
                     <h4 className="font-medium text-foreground">Member {index + 1}</h4>
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <div>
@@ -203,7 +195,7 @@ const SignUp = () => {
                           placeholder="Full Name"
                           value={member.fullName}
                           onChange={(e) => handleTeamMemberChange(index, 'fullName', e.target.value)}
-                          className="mt-1 block w-full rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm border-gray-300"
+                          className="mt-1 block w-full rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm border-border"
                         />
                       </div>
                       <div>
@@ -212,7 +204,7 @@ const SignUp = () => {
                           placeholder="Email"
                           value={member.email}
                           onChange={(e) => handleTeamMemberChange(index, 'email', e.target.value)}
-                          className="mt-1 block w-full rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm border-gray-300"
+                          className="mt-1 block w-full rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm border-border"
                         />
                       </div>
                       <div>
@@ -221,7 +213,7 @@ const SignUp = () => {
                           placeholder="Year / Major"
                           value={member.yearMajor}
                           onChange={(e) => handleTeamMemberChange(index, 'yearMajor', e.target.value)}
-                          className="mt-1 block w-full rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm border-gray-300"
+                          className="mt-1 block w-full rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm border-border"
                         />
                       </div>
                       <div>
@@ -230,7 +222,7 @@ const SignUp = () => {
                           placeholder="Skills (comma separated)"
                           value={member.skills}
                           onChange={(e) => handleTeamMemberChange(index, 'skills', e.target.value)}
-                          className="mt-1 block w-full rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm border-gray-300"
+                          className="mt-1 block w-full rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm border-border"
                         />
                       </div>
                     </div>

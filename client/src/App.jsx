@@ -12,6 +12,8 @@ import { Header1 } from "./components/ui/Header1";
 import HackathonsPage from "./pages/hackathons/HackathonsPage";
 import CreateHackathonPage from "./pages/hackathons/CreateHackathonPage";
 import ResourcesPage from "./pages/resources/ResourcesPage";
+import CountdownSection from './components/ui/CountdownSection';
+import { AuthProvider } from './context/AuthContext';
 
 // Protected Route component
 const ProtectedRoute = ({ children }) => {
@@ -24,7 +26,7 @@ const ProtectedRoute = ({ children }) => {
 const AppRoutes = () => (
   <Routes>
     {/* Public Routes */}
-    <Route path="/" element={<LandingPage />} />
+    <Route path="/" element={<CountdownSection />} />
     <Route path="/signup" element={<SignUp />} />
     <Route path="/login" element={<Login />} />
     <Route path="/hackathons" element={<HackathonsPage />} />
@@ -70,12 +72,14 @@ const AppRoutes = () => (
 );
 
 const App = () => (
-  <Router>
-    <div className="min-h-screen bg-background">
-      <Header1 />
-      <AppRoutes />
-    </div>
-  </Router>
+  <AuthProvider>
+    <Router>
+      <div className="min-h-screen bg-white">
+        <Header1 />
+        <AppRoutes />
+      </div>
+    </Router>
+  </AuthProvider>
 );
 
 export default App;

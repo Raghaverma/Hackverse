@@ -1,17 +1,30 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
     const [formData, setFormData] = useState({
-        email: "",
+        username: "",
         password: "",
     });
 
+    const navigate = useNavigate();
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Handle form submission
-        console.log(formData);
+
+        // Hardcoded admin credentials
+        const adminUsername = "admin@gmail.com";
+        const adminPassword = "admin@123";
+
+        // Check if the entered credentials match the admin credentials
+        if (formData.username === adminUsername && formData.password === adminPassword) {
+            console.log("Admin logged in successfully!");
+            navigate("/admin-dashboard"); // Redirect to admin dashboard (you can change the route)
+        } else {
+            console.log("Invalid credentials");
+            // You can show an error message or perform other actions here
+        }
     };
 
     return (
@@ -21,15 +34,15 @@ export default function LoginPage() {
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-2">
-                        <label htmlFor="email" className="text-sm font-medium">
-                            Email
+                        <label htmlFor="username" className="text-sm font-medium">
+                            Username
                         </label>
                         <input
-                            type="email"
-                            id="email"
+                            type="text"  // 'text' type to remove email validation
+                            id="username"
                             className="w-full p-2 border rounded-md"
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                            value={formData.username}
+                            onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                             required
                         />
                     </div>
@@ -68,4 +81,4 @@ export default function LoginPage() {
             </div>
         </div>
     );
-} 
+}
