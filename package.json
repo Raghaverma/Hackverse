@@ -1,0 +1,21 @@
+{
+  "name": "hackverse",
+  "version": "1.0.0",
+  "description": "Hackverse - A platform for hackathons",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "start": "cd server && npm start",
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install",
+    "build": "cd client && npm run build",
+    "dev": "concurrently \"cd client && npm run dev\" \"cd server && npm start\""
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+} 
